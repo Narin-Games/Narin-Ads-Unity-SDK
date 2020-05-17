@@ -1,4 +1,6 @@
-﻿using Narin.Unity.Advertisement;
+﻿#if _tapsell_ && UNITY_ANDROID
+
+using Narin.Unity.Advertisement;
 using System;
 using TapsellSDK;
 
@@ -13,11 +15,11 @@ public partial class TapsellManager : IAdManager {
         private readonly string _zoneId;
         private TapsellAd _currentAd = null;
 
-        #pragma warning disable
+#pragma warning disable
         public event EventHandler<EventArgs> OnStarted;
         public event EventHandler<EventArgs> OnClosed;
         public event EventHandler<EventArgs> OnLeavingApplication;
-        #pragma warning restore
+#pragma warning restore
         public event EventHandler<EventArgs> OnLoaded;
         public event EventHandler<AdErrorEventArgs> OnError;
 
@@ -36,7 +38,7 @@ public partial class TapsellManager : IAdManager {
             _currentAd = null;
         }
 
-        #region _handlers_
+#region _handlers_
         private void OnAdAvailableHandler(TapsellSDK.TapsellAd result) {
             _currentAd = result;
             if (OnLoaded == null) return;
@@ -68,6 +70,8 @@ public partial class TapsellManager : IAdManager {
             OnError(this, new AdErrorEventArgs(AdError.AdExpired,
                 _SCRIPT_NAME + methodName + "No internet error"));
         }
-        #endregion
+#endregion
     }
 }
+
+#endif

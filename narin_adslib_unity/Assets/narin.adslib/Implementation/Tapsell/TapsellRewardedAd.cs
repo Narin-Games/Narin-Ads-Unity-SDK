@@ -1,4 +1,6 @@
-﻿using Narin.Unity.Advertisement;
+﻿#if _tapsell_ && UNITY_ANDROID
+
+using Narin.Unity.Advertisement;
 using System;
 using TapsellSDK;
 
@@ -35,3 +37,5 @@ public partial class TapsellManager : IAdManager {
         }
     }
 }
+
+#endif

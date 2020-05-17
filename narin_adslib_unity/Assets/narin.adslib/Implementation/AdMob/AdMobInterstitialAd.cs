@@ -1,10 +1,12 @@
-﻿using Narin.Unity.Advertisement;
+﻿#if _google_admob_ && UNITY_ANDROID
+
+using Narin.Unity.Advertisement;
 using gmd = GoogleMobileAds.Api;
 using System;
 
 public partial class AdMobManager : IAdManager {
 
-    public IInterstitialAd GetInterstialAd(string zoneId) {
+    public IInterstitialAd GetInterstitialAd(string zoneId) {
         return new AdMobInterstitialAd(zoneId);
     }
 
@@ -47,7 +49,7 @@ public partial class AdMobManager : IAdManager {
             if (_ad.IsLoaded()) _ad.Show();
         }
 
-        #region _handlers_
+#region _handlers_
         private void OnAdLoadedHandler(object sender, EventArgs e) {
             if (null != OnLoaded)
                 OnLoaded(this, e);
@@ -72,6 +74,8 @@ public partial class AdMobManager : IAdManager {
             if(null != OnLeavingApplication)
                 OnLeavingApplication(this, e);
         }
-        #endregion
+#endregion
     }
 }
+
+#endif

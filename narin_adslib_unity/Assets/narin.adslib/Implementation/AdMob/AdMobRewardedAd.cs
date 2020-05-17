@@ -1,4 +1,6 @@
-﻿using Narin.Unity.Advertisement;
+﻿#if _google_admob_ && UNITY_ANDROID
+
+using Narin.Unity.Advertisement;
 using gmd = GoogleMobileAds.Api;
 using System;
 
@@ -50,9 +52,9 @@ public partial class AdMobManager : IAdManager {
             if(_ad.IsLoaded()) _ad.Show();
         }
 
-        #region _handlers_
+#region _handlers_
         private void OnAdLoadedHandler(object sender, EventArgs e) {
-            if(null == OnLoaded) return;
+            if(null != OnLoaded)
                 OnLoaded(this, e);
         }
 
@@ -82,9 +84,11 @@ public partial class AdMobManager : IAdManager {
         }
 
         private void OnUserEarnedRewardHandler(object sender, gmd.Reward e) {
-            if(null == OnEarnedReward)
+            if(null != OnEarnedReward)
                 OnEarnedReward(this, new AdRewardEventArgs(e.Type, (int)e.Amount));
         }
-        #endregion
+#endregion
     }
 }
+
+#endif

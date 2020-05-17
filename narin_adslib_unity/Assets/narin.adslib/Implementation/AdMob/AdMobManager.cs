@@ -1,4 +1,6 @@
-﻿using Narin.Unity.Advertisement;
+﻿#if _google_admob_ && UNITY_ANDROID
+
+using Narin.Unity.Advertisement;
 using gmd = GoogleMobileAds.Api;
 using System;
 
@@ -13,3 +15,5 @@ public partial class AdMobManager: IAdManager {
         gmd.MobileAds.Initialize(_adData.AppId);
     }
 }
+
+#endif
