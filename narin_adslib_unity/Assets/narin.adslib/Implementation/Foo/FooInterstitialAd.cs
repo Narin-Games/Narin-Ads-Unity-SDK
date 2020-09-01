@@ -3,34 +3,38 @@
 using Narin.Unity.Advertisement;
 using System;
 
-public partial class FooManager : IAdManager {
+namespace Narin.Unity.Advertisement {
+public partial class AdBuilder {
 
-    public IInterstitialAd GetInterstitialAd(string zoneId) {
-        return new FooInterstitialAd();
-    }
+    private partial class FooManager : IAdManager {
 
-    private class FooInterstitialAd : IInterstitialAd {
-        public string ZoneId {
-            get {
-                return "FooZoneId";
+        public IInterstitialAd GetInterstitialAd(string zoneId) {
+            return new FooInterstitialAd();
+        }
+
+        private class FooInterstitialAd : IInterstitialAd {
+            public string ZoneId {
+                get {
+                    return "FooZoneId";
+                }
+            }
+#pragma warning disable 67
+            public event EventHandler<EventArgs> OnLoaded;
+            public event EventHandler<EventArgs> OnStarted;
+            public event EventHandler<EventArgs> OnClosed;
+            public event EventHandler<AdErrorEventArgs> OnError;
+            public event EventHandler<EventArgs> OnLeavingApplication;
+#pragma warning restore 67
+            public void Load() {
+                
+            }
+
+            public void Show() {
+                
             }
         }
-
-        public event EventHandler<EventArgs> OnLoaded;
-        public event EventHandler<EventArgs> OnStarted;
-        public event EventHandler<EventArgs> OnClosed;
-        public event EventHandler<AdErrorEventArgs> OnError;
-        public event EventHandler<EventArgs> OnLeavingApplication;
-
-        public void Load() {
-            
-        }
-
-        public void Show() {
-            
-        }
     }
-
+}
 }
 
 #endif

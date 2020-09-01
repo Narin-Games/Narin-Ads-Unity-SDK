@@ -1,19 +1,22 @@
 ﻿#if _tapsell_plus_ && UNITY_ANDROID || _dev_ && UNITY_ANDROID
 
-using Narin.Unity.Advertisement;
 using TapsellPlusSDK;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public partial class TapsellPlusManager : IAdManager {
-    public AdData AdData { get { return _adData; }}
+namespace Narin.Unity.Advertisement {
+public partial class AdBuilder {
 
-    private AdData _adData = new AdData(AdData.TAPSELL_PLUS_KEY);
+    private partial class TapsellPlusManager : IAdManager {
 
-    public void Init() {
-        TapsellPlus.initialize(_adData.AppId);
+        public AdData AdData { get { return _adData; }}
+    
+        private AdData _adData = new AdData(AdData.TAPSELL_PLUS_KEY);
+    
+        public void Init() {
+            TapsellPlus.initialize(_adData.AppId);
+        }
+
     }
-}
 
+}
+}
 #endif

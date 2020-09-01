@@ -1,58 +1,61 @@
 ﻿#if _google_admob_ && UNITY_ANDROID || _dev_ && UNITY_ANDROID
 
-using Narin.Unity.Advertisement;
 using gmd = GoogleMobileAds.Api;
 using System;
 
-public partial class AdMobManager : IAdManager {
-    public IRewardedAd GetRewardedAd(string zoneId) {
-        return new AdMobRewardedAd(zoneId);
-    }
+namespace Narin.Unity.Advertisement {
+public partial class AdBuilder {
 
-    private class AdMobRewardedAd : IRewardedAd {
+    private partial class AdMobManager : IAdManager {
 
-        public string ZoneId { get{return _zoneId; } }
-
-        public event EventHandler<AdRewardEventArgs> OnEarnedReward;
-        public event EventHandler<EventArgs> OnLoaded;
-        public event EventHandler<EventArgs> OnStarted;
-        public event EventHandler<EventArgs> OnClosed;
-        public event EventHandler<AdErrorEventArgs> OnError;
-        public event EventHandler<EventArgs> OnLeavingApplication;
-
-        private readonly string _zoneId;
-        private readonly gmd.RewardedAd _ad;
-
-        public AdMobRewardedAd(string zoneId) {
-            _zoneId = zoneId;
-            _ad = new gmd.RewardedAd(_zoneId);
-
-            _ad.OnAdLoaded              += OnAdLoadedHandler;
-            _ad.OnAdFailedToLoad        += OnFailedToLoadHandler;
-            _ad.OnAdOpening             += OnAdOpeningHandler;
-            _ad.OnAdFailedToShow        += OnAdFailedToShowHandler;
-            _ad.OnAdClosed              += OnAdClosedHandler;
-            _ad.OnUserEarnedReward      += OnUserEarnedRewardHandler;
+        public IRewardedAd GetRewardedAd(string zoneId) {
+            return new AdMobRewardedAd(zoneId);
         }
-
-        ~AdMobRewardedAd() {
-            _ad.OnAdLoaded              -= OnAdLoadedHandler;
-            _ad.OnAdFailedToLoad        -= OnFailedToLoadHandler;
-            _ad.OnAdOpening             -= OnAdOpeningHandler;
-            _ad.OnAdFailedToShow        -= OnAdFailedToShowHandler;
-            _ad.OnAdClosed              -= OnAdClosedHandler;
-            _ad.OnUserEarnedReward      -= OnUserEarnedRewardHandler;
-        }
-
-        public void Load() {
-            _ad.LoadAd(new gmd.AdRequest.Builder().Build());
-        }
-
-        public void Show() {
-            if(_ad.IsLoaded()) _ad.Show();
-        }
-
-#region _handlers_
+    
+        private class AdMobRewardedAd : IRewardedAd {
+    
+            public string ZoneId { get{return _zoneId; } }
+    
+            public event EventHandler<AdRewardEventArgs> OnEarnedReward;
+            public event EventHandler<EventArgs> OnLoaded;
+            public event EventHandler<EventArgs> OnStarted;
+            public event EventHandler<EventArgs> OnClosed;
+            public event EventHandler<AdErrorEventArgs> OnError;
+            public event EventHandler<EventArgs> OnLeavingApplication;
+    
+            private readonly string _zoneId;
+            private readonly gmd.RewardedAd _ad;
+    
+            public AdMobRewardedAd(string zoneId) {
+                _zoneId = zoneId;
+                _ad = new gmd.RewardedAd(_zoneId);
+    
+                _ad.OnAdLoaded              += OnAdLoadedHandler;
+                _ad.OnAdFailedToLoad        += OnFailedToLoadHandler;
+                _ad.OnAdOpening             += OnAdOpeningHandler;
+                _ad.OnAdFailedToShow        += OnAdFailedToShowHandler;
+                _ad.OnAdClosed              += OnAdClosedHandler;
+                _ad.OnUserEarnedReward      += OnUserEarnedRewardHandler;
+            }
+    
+            ~AdMobRewardedAd() {
+                _ad.OnAdLoaded              -= OnAdLoadedHandler;
+                _ad.OnAdFailedToLoad        -= OnFailedToLoadHandler;
+                _ad.OnAdOpening             -= OnAdOpeningHandler;
+                _ad.OnAdFailedToShow        -= OnAdFailedToShowHandler;
+                _ad.OnAdClosed              -= OnAdClosedHandler;
+                _ad.OnUserEarnedReward      -= OnUserEarnedRewardHandler;
+            }
+    
+            public void Load() {
+                _ad.LoadAd(new gmd.AdRequest.Builder().Build());
+            }
+    
+            public void Show() {
+                if(_ad.IsLoaded()) _ad.Show();
+            }
+    
+        #region _handlers_
         private void OnAdLoadedHandler(object sender, EventArgs e) {
             if(null != OnLoaded)
                 OnLoaded(this, e);
@@ -87,8 +90,9 @@ public partial class AdMobManager : IAdManager {
             if(null != OnEarnedReward)
                 OnEarnedReward(this, new AdRewardEventArgs(e.Type, (int)e.Amount));
         }
-#endregion
+        #endregion
+        }
     }
 }
-
+}
 #endif
