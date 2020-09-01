@@ -552,7 +552,7 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    7: STORE_CAFEBAZAAR
+    7: STORE_CAFEBAZAAR;_dev_
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}

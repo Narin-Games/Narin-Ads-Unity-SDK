@@ -1,4 +1,4 @@
-﻿#if _tapsell_ && UNITY_ANDROID
+﻿#if _tapsell_ && UNITY_ANDROID || _dev_ && UNITY_ANDROID
 
 using Narin.Unity.Advertisement;
 using System;

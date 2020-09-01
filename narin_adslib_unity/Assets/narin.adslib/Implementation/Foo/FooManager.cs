@@ -1,4 +1,4 @@
-﻿#if _foo_
+﻿#if _foo_ || _dev_ && UNITY_ANDROID
 
 using Narin.Unity.Advertisement;
 

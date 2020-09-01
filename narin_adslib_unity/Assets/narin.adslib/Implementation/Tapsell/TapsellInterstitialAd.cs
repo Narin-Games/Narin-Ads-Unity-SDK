@@ -1,11 +1,12 @@
-﻿#if _tapsell_ && UNITY_ANDROID
+﻿#if _tapsell_ && UNITY_ANDROID || _dev_ && UNITY_ANDROID
 
 using Narin.Unity.Advertisement;
 using System;
 using TapsellSDK;
 
 public partial class TapsellManager : IAdManager {
-    public IInterstitialAd GetInterstialAd(string zoneId) {
+
+    public IInterstitialAd GetInterstitialAd (string zoneId) {
         return new TapsellInterstitialAd(zoneId);
     }
 

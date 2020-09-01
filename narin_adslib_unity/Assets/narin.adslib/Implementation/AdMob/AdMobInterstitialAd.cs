@@ -1,4 +1,4 @@
-﻿#if _google_admob_ && UNITY_ANDROID
+﻿#if _google_admob_ && UNITY_ANDROID || _dev_ && UNITY_ANDROID
 
 using Narin.Unity.Advertisement;
 using gmd = GoogleMobileAds.Api;
