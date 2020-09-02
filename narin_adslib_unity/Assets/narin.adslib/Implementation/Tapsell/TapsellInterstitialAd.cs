@@ -2,13 +2,14 @@
 
 using System;
 using TapsellSDK;
+
 namespace Narin.Unity.Advertisement {
 public partial class AdBuilder {
 
     private partial class TapsellManager : IAdManager {
     
-        public IInterstitialAd GetInterstitialAd (string zoneId) {
-            return new TapsellInterstitialAd(zoneId);
+        public IInterstitialAd GetInterstitialAd (string zoneName) {
+            return new TapsellInterstitialAd(_zoneIds[zoneName]);
         }
     
         private class TapsellInterstitialAd : IInterstitialAd {
@@ -17,11 +18,11 @@ public partial class AdBuilder {
             private readonly string _zoneId;
             private TapsellAd _currentAd = null;
     
-        #pragma warning disable
+        #pragma warning disable 67
             public event EventHandler<EventArgs> OnStarted;
             public event EventHandler<EventArgs> OnClosed;
             public event EventHandler<EventArgs> OnLeavingApplication;
-        #pragma warning restore
+        #pragma warning restore 67
             public event EventHandler<EventArgs> OnLoaded;
             public event EventHandler<AdErrorEventArgs> OnError;
     
@@ -76,6 +77,7 @@ public partial class AdBuilder {
 
         }
     }
+
 }
 }
 #endif

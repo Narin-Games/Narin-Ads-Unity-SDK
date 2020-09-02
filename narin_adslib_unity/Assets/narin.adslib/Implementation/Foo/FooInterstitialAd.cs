@@ -8,7 +8,7 @@ public partial class AdBuilder {
 
     private partial class FooManager : IAdManager {
 
-        public IInterstitialAd GetInterstitialAd(string zoneId) {
+        public IInterstitialAd GetInterstitialAd(string zoneName) {
             return new FooInterstitialAd();
         }
 

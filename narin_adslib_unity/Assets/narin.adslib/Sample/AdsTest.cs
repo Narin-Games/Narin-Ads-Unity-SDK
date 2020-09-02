@@ -3,22 +3,17 @@ using Narin.Unity.Advertisement;
 
 public class AdsTest: MonoBehaviour {
 
-    #if _google_admob_
-    private static IAdManager _adManager = new AdMobManager();
-    #elif _tapsell_
-    private static IAdManager _adManager = new TapsellManager();
-    #else
-    private static IAdManager _adManager;
-    #endif
-
     private IInterstitialAd _videoAd;
     private bool _isInit = false;
+    private IAdManager _adManager = null;
 
     void Start() {
+        _adManager = AdBuilder.CurrentAdManager;
+
         if(true == _isInit) return;
         _adManager.Init();
         _isInit = true;
-        _videoAd = _adManager.GetInterstitialAd(_adManager.AdData.RewardedVideoTest);
+        _videoAd = _adManager.GetInterstitialAd("LiveAgain");
     }
 
     void OnEnable() {

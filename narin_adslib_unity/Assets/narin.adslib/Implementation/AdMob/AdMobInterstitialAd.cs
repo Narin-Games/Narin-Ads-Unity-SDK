@@ -8,8 +8,8 @@ public partial class AdBuilder {
 
     private partial class AdMobManager : IAdManager {
 
-        public IInterstitialAd GetInterstitialAd(string zoneId) {
-            return new AdMobInterstitialAd(zoneId);
+        public IInterstitialAd GetInterstitialAd(string zoneName) {
+            return new AdMobInterstitialAd(_zoneIds[zoneName]);
         }
 
         private class AdMobInterstitialAd : IInterstitialAd {

@@ -7,7 +7,7 @@ public partial class AdBuilder {
 
     private partial class FooManager : IAdManager {
     
-        public IRewardedAd GetRewardedAd(string zoneId) {
+        public IRewardedAd GetRewardedAd(string zoneName) {
             return new FooRewardedAd();
         }
     

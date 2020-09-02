@@ -1,5 +1,6 @@
 ﻿#if _tapsell_ && UNITY_ANDROID || _dev_ && UNITY_ANDROID
 
+using System.Collections.Generic;
 using TapsellSDK;
 
 namespace Narin.Unity.Advertisement {
@@ -9,14 +10,17 @@ public partial class AdBuilder {
 
         private const string _SCRIPT_NAME = "[TapsellImplementation.cs] --> TapsellManager.";
     
-        public AdData AdData { get { return _adData; } }
-    
-        private readonly AdData _adData = new AdData(AdData.TAPSELL_KEY);
-    
-        public void Init() {
-            Tapsell.Initialize(_adData.AppId);
+        private string _appId = null;
+        private Dictionary<string, string> _zoneIds = new Dictionary<string, string>();
+        
+        public TapsellManager(string appId, Dictionary<string, string> zoneIds) {
+            _appId  = appId;
+            _zoneIds = zoneIds;
         }
 
+        public void Init() {
+            Tapsell.Initialize(_appId);
+        }
     }
 }
 }

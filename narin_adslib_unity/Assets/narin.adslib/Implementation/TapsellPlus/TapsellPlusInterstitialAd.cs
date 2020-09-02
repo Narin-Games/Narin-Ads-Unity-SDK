@@ -8,8 +8,8 @@ public partial class AdBuilder {
 
     private partial class TapsellPlusManager : IAdManager {
     
-        public IInterstitialAd GetInterstitialAd(string zoneId) {
-            return new TapsellPlusInterstitialAd(zoneId);
+        public IInterstitialAd GetInterstitialAd(string zoneName) {
+            return new TapsellPlusInterstitialAd(_zoneIds[zoneName]);
         }
     
         public class TapsellPlusInterstitialAd : IInterstitialAd {

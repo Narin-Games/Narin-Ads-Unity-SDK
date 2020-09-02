@@ -8,8 +8,8 @@ public partial class AdBuilder {
 
     private partial class AdMobManager : IAdManager {
 
-        public IRewardedAd GetRewardedAd(string zoneId) {
-            return new AdMobRewardedAd(zoneId);
+        public IRewardedAd GetRewardedAd(string zoneName) {
+            return new AdMobRewardedAd(_zoneIds[zoneName]);
         }
     
         private class AdMobRewardedAd : IRewardedAd {
