@@ -51,7 +51,7 @@ public class AdsTest: MonoBehaviour {
 The Build stage only needs to happen once when the game is run and after calling **AdBuilder.Build()**, you create a IAdManager component whose reference is stored in the static variable **AdBuilder.CurrentAdManager**.
 
 ``` csharp
-//This static variable is set after calling IAPBuilder.BuildAndAttach()
+//This static variable is set after calling AdBuilder.Build()
 AdBuilder.CurrentAdManager
 ```
 
