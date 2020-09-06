@@ -8,3 +8,14 @@ This SDK creates an interface for you to use the SDK of different advertising ag
 3) Integrate multiple Ad Agencies with just one implementation
 4) Can be used in Distributed Build System to use different Ad Agencies for different releases
 
+## How To Use
+This system has three stages in its life cycle, which I will explain in order:
+
+**Build --> Initial --> GetAdObject**
+
+
+### 1) Build:
+
+In this step you need to create an object of type IAdManager through the AdBuilder class to access the Ad Agency API through this object.
+
+You must first provide Ad information to the AdBuilder class, as in the following code example:
