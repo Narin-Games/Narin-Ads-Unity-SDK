@@ -50,7 +50,7 @@ public static class CustomBuildBazaar {
             string buildPath = EditorUtility.SaveFilePanel("Save CafeBazaar Build", "", "CafeBazaar", "apk");
             string windowsBuildPath = efo.EditorTools.GetWindowsDirectory(buildPath);
             Debug.Log(windowsBuildPath);
-            string buildLog = BuildPipeline.BuildPlayer(sceneList, buildPath, BuildTarget.Android, BuildOptions.None);
+            string buildLog = BuildPipeline.BuildPlayer(sceneList, buildPath, BuildTarget.Android, BuildOptions.None).ToString();
             Debug.Log(buildLog);
 
             if (windowsBuildPath != "")

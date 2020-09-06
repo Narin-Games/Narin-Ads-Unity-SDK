@@ -40,7 +40,7 @@ namespace Narin.Unity.Advertisement {
             ret = new TapsellManager(_appIds[AdAgency.Tapsell], _zoneIds[AdAgency.Tapsell]);
             #endif
 
-            #if _dev_ || _tapsellplus_
+            #if _dev_ || _tapsell_plus_
             ret = new TapsellPlusManager(_appIds[AdAgency.TapsellPlus], _zoneIds[AdAgency.TapsellPlus]);
             #endif
 
