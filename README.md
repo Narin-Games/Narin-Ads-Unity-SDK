@@ -168,7 +168,35 @@ In the [Sample Directory](https://github.com/Narin-Games/Narin-Ads-Unity-SDK/tre
 
 In this SDK, a common interface is designed for several advertising agencies, to activate each of these advertising agencies, you must do the following two steps.
 
-### 1) Configure Ad Agencies:
+#### 1) Configure Ad Agencies:
 
 In this step, you must first configure the SDK of the desired advertising agency, which you can do through the following links:
 
+[AdMob Configuration](https://developers.google.com/admob/unity/quick-start)
+
+[Tapsell Configuration](https://docs.tapsell.ir/tapsell-sdk/unity/initialize-android/)
+
+[Tapsell Plus Configuration](https://docs.tapsell.ir/plus-sdk/unity/initialize-android/)
+
+**Notice:**
+
+This step is only related to import Unity Package and resolve the required android plugins and you do not need to write any code, the codes are already implemented in the SDK.
+
+#### 2) Set Scripting Symbols:
+
+First, go to the following path in the Unity engine:
+
+**File > Build Settings > Player Settings > Player > Other Settings > Scripting Define Symbols**
+
+![unity-scripting-define-symbols]()
+
+Then in this path, define the specific symbol of that ad agency according to the table:
+
+| Ad Agency     | Symbole         |
+| :--:          | :--:            |
+| AdMob         | \_google_admob_ |
+| Tapsell       | \_tapsell_      |
+| Tapsell Plus  | \_tapsell_plus_ |
+
+
+This step causes only the code related to that release to be used in your final build.
