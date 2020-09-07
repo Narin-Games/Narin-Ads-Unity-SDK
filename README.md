@@ -166,3 +166,9 @@ In the [Sample Directory](https://github.com/Narin-Games/Narin-Ads-Unity-SDK/tre
 
 ## Build and Export:
 
+In this SDK, a common interface is designed for several advertising agencies, to activate each of these advertising agencies, you must do the following two steps.
+
+### 1) Configure Ad Agencies:
+
+In this step, you must first configure the SDK of the desired advertising agency, which you can do through the following links:
+
