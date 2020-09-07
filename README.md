@@ -25,7 +25,7 @@ public class AdsTest: MonoBehaviour {
 
   private IAdManager _adManager = null;
   
-//...
+  //...
 
   private void InitialAdManager() {
       var builder = new AdBuilder();
