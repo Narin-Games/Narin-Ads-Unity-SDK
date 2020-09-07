@@ -188,7 +188,7 @@ First, go to the following path in the Unity engine:
 
 **File > Build Settings > Player Settings > Player > Other Settings > Scripting Define Symbols**
 
-![unity-scripting-define-symbols]()
+![unity-scripting-define-symbols](https://lh3.googleusercontent.com/qXb6LT-dbhybyOc_5GeD_MBh5SQKVJZSA5mq5DAJDk2Rffa2uKd_3mo9j1V5PMZfYZnvj9GkakHKoM8uioXW=w1920-h965)
 
 Then in this path, define the specific symbol of that ad agency according to the table:
 
