@@ -77,3 +77,92 @@ public class AdsTest: MonoBehaviour {
 }
 ```
 
+### 3) Get Ad Unit:
+
+There are several ways to display ads, including Rewarded Video Ad, Interstitial Ad and Native Banner, each of which we call Ad Unit. This section teaches how to implement each of these Ad Units.
+
+Only two types of Rewarded video ads and Interstitial ads are supported in this SDK.
+
+#### 3-1) Rewarded Video Ad:
+**Get an IRewardedAd Object:**
+
+```csharp
+IAdManager adManager = AdBuilder.CurrentAdManager;
+IRewardedAd rewardedAd = adManager.GetRewardedAd("ZoneName");
+```
+**IRewardedAd Methods:**
+
+```csharp
+// Sends request to get rewarded ad and load it
+void Load();
+
+// Show loaded ad
+void Show();
+```
+**IRewardedAd Events:**
+
+```csharp
+// Fired after ad loaded successfully
+event EventHandler<EventArgs>           OnLoaded;
+
+// Fired after ad starts playing
+event EventHandler<EventArgs>           OnStarted;
+
+// Fired after ad playing ad closed by user
+event EventHandler<EventArgs>           OnClosed;
+
+// Fired after fails to load or show ads
+event EventHandler<AdErrorEventArgs>    OnError;
+
+// Fired after leaving the application by the user in the middle of the ad play (only works on AdMob)
+event EventHandler<EventArgs>           OnLeavingApplication;
+
+// Fired after the end of the rewarded ad by the user
+event EventHandler<AdRewardEventArgs>   OnEarnedReward;
+```
+
+#### 3-2) Interstitial Ad:
+
+**Get an IInterstitialAd Object:**
+
+```csharp
+IAdManager adManager = AdBuilder.CurrentAdManager;
+IInterstitialAd interstitialAd = adManager.GetInterstitialAd("ZoneName");
+```
+
+**IInterstitialAd Methods:**
+
+```csharp
+// Sends request to get interstitial ad and load it
+void Load();
+
+// Show loaded ad
+void Show();
+```
+
+**IInterstitialAd Events:**
+
+```csharp
+// Fired after ad loaded successfully
+event EventHandler<EventArgs>           OnLoaded;
+
+// Fired after ad starts playing
+event EventHandler<EventArgs>           OnStarted;
+
+// Fired after ad playing ad closed by user
+event EventHandler<EventArgs>           OnClosed;
+
+// Fired after fails to load or show ads
+event EventHandler<AdErrorEventArgs>    OnError;
+
+// Fired after leaving the application by the user in the middle of the ad play (only works on AdMob)
+event EventHandler<EventArgs>           OnLeavingApplication;
+```
+
+## Sample:
+
+In the [Sample Directory](https://github.com/Narin-Games/Narin-Ads-Unity-SDK/tree/master/narin_adslib_unity/Assets/narin.adslib/Sample) there is a complete example of how to use the SDK that you can use.
+
+
+## Build and Export:
+
